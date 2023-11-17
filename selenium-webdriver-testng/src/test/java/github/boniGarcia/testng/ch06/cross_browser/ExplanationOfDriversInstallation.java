@@ -1,4 +1,4 @@
-package github.boniGarcia.testng.ch06.parametrized;
+package github.boniGarcia.testng.ch06.cross_browser;
 
 public class ExplanationOfDriversInstallation {
     /*
