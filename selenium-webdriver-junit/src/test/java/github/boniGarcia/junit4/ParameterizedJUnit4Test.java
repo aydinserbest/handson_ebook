@@ -3,19 +3,27 @@ package github.boniGarcia.junit4;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class ParameterizedJUnit4Test {
     WebDriver driver;
-    @Parameter(0)
+    @Parameter  // the default index is implied to be 0
     public String username;
-    @Parameterized.Parameter(1)
+    @Parameter(1)  // you can start indexing from 1 if you've omitted the index for the first parameter
     public String password;
-    @Parameter(3)
+    @Parameter(2)
     public String expectedText;
 
     @Before
@@ -23,32 +31,48 @@ public class ParameterizedJUnit4Test {
     }
     @After
     public void teardown(){driver.quit();}
+    @Parameters(name = "{index}: username={0} password={1} expectedText={2}")
+    public static Collection<Object[]> data() {
+        return Arrays
+                .asList(new Object[][] { { "user", "user", "Login successful" },
+                        { "bad-user", "bad-passwd", "Invalid credentials" } });
+    }
+    @Test
+    public void testParameterized() {
+        driver.get(
+                "https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.cssSelector("button")).click();
+
+        String bodyText = driver.findElement(By.tagName("body")).getText();
+        assertThat(bodyText).contains(expectedText);
+    }
 }
 /*
-Junit ile 2 ayri yontem var
-constructor üzerinden ve sınıf değişkenlerine doğrudan annotasyonlarla enjekte etme.
- */
-/*
-Constructor Yöntemi:
-Test sınıfının bir constructor'ı kullanılarak parametreler sınıf değişkenlerine atanır.
-Bu yöntemde, değişkenler genellikle private olarak tanımlanır çünkü erişim constructor aracılığıyla sağlanır.
+    In JUnit, there are two separate methods:
+    one through the constructor and the other by directly injecting into class variables with annotations.
 
-Annotasyon Yöntemi:
-@Parameter annotasyonu kullanılarak, JUnit test runner'ı tarafından her test için belirlenen parametreler
-direkt olarak public sınıf değişkenlerine atanır. Bu yöntemde, değişkenlerin public olması genellikle gereklidir,
-çünkü test runner'ı bu değişkenlere doğrudan erişip değer ataması yapar.
- */
-/*
-    JUnit ile parameterized testler yaparken,
-    test runner'ın parametre değerlerini test sınıfının değişkenlerine enjekte edebilmesi için
-    bu değişkenlerin erişilebilir olması gerekmektedir.
+    Constructor Method:
+    Parameters are assigned to class variables using the constructor of the test class.
+    In this method, variables are usually defined as private since access is provided through the constructor.
 
-    Test runner, parametreleri sınıfa enjekte etmek için bu değişkenlere doğrudan erişebilmeli,
-    dolayısıyla değişkenlerin genellikle public olarak tanımlanması bu gereksinimi karşılar.
+    Annotation Method:
+    Using the @Parameter annotation, parameters determined by the JUnit test runner for each test
+    are directly assigned to public class variables. In this method,
+    it is usually necessary for the variables to be public,
+    because the test runner directly accesses and assigns values to these variables.
 
-    TestNG'de ise parametreler genellikle metod parametreleri olarak verilir
-    ve bu yüzden sınıf değişkenlerinin erişim düzeyleri farklılık gösterebilir.
+    When conducting parameterized tests with JUnit,
+    it is necessary for the variables of the test class to be accessible so that the test runner
+    can inject parameter values into them.
+
+    The test runner should be able to directly access these variables to inject the parameters,
+    therefore, defining the variables as public usually meets this requirement.
+
+    In TestNG, however, parameters are typically given as method parameters,
+    and thus the access levels of the class variables can vary.
  */
 
 

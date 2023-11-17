@@ -1,8 +1,6 @@
-package github.boniGarcia.testng.ch06.parametrized;
+package github.boniGarcia.junit4;
 
-import org.openqa.selenium.WebDriver;
-
-public class Explanations {
+public class Explanations1 {
     /*
     The approaches to parameterized testing in TestNG and JUnit are as follows:
 
