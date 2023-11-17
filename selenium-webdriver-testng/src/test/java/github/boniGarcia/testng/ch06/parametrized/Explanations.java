@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 
 public class Explanations {
     /*
+    A widespread feature commonly supported by unit testing frameworks is creating parameterized tests.
+    This feature enables the execution of tests multiple times using different parameters.
+     */
+    /*
     The approaches to parameterized testing in TestNG and JUnit are as follows:
 
     TestNG:

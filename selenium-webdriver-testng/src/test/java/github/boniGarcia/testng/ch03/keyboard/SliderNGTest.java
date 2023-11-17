@@ -113,6 +113,10 @@ public class SliderNGTest {
         (i.e., a characteristic in the source code that can lead to undesirable effects).
 
  */
+/*
+WebDriverManager resolves the required driver (chromedriver in this case)
+and creates an instance of the proper WebDriver type (ChromeDriver in this case) in a single line.
+ */
     /*
         The WebDriverManager.chromedriver().create(); command,
          as previously mentioned, sets up a shutdown hook that will automatically close the browser

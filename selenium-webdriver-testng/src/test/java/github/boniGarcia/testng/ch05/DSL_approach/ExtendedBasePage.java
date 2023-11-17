@@ -21,11 +21,25 @@ public class ExtendedBasePage {
     WebDriverWait wait;
     int timeoutSec = 5; // wait timeout (5 seconds by default)
     /*in this case, this class also encapsulates the required logic to create a WebDriver instance.
-    /*
-    We use WebDriverManager to resolve the required driver and create the WebDriver instance.
-    WebDriverManager allows the use of a parameterized manager by invoking the method getInstance().
-    In this case, we use the browser name (e.g., chrome, firefox, etc.) to select the manager.
      */
+
+    /*
+    In addition to the browser-specific managers
+    (e.g., chromedriver(), firefoxdriver(), etc.), WebDriverManager provides a generic manager,
+    i.e., a manager that can be parameterized to act as a specific manager (for Chrome, Firefox, etc.).
+     */
+    /*
+    There are different options to invoke this method:
+    1-
+    getInstance(String browserName)
+    Where browserName is the browser name as case-insensitive string.
+    The possible values are Chrome, Firefox, Edge, Opera, Chromium, IExplorer, and Safari.
+    2-
+    getInstance()
+    When no parameter is specified,
+    the configuration key wdm.defaultBrowser is used to select the manager (Chrome by default).
+     */
+
     public ExtendedBasePage(String browser){
         this.driver = WebDriverManager.getInstance(browser).create();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSec));
