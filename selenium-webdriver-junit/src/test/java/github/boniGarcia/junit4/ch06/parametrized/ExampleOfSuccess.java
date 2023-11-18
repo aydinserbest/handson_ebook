@@ -1,4 +1,4 @@
-package github.boniGarcia.junit4;
+package github.boniGarcia.junit4.ch06.parametrized;
 
 import org.junit.Assert;
 import org.junit.Test;

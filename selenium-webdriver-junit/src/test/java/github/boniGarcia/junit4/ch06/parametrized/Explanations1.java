@@ -1,4 +1,4 @@
-package github.boniGarcia.junit4;
+package github.boniGarcia.junit4.ch06.parametrized;
 
 public class Explanations1 {
     /*

@@ -20,7 +20,7 @@ public class ParameterizedNGTest {
         driver.quit();
     }
     @DataProvider(name = "LoginData")
-    public static Object[][] data(){
+    public static Object[] data(){
         return new Object[][]{{"user","user","Login successful"},
                 {"bad-user", "bad-user", "Invalid credentials"}};
     }

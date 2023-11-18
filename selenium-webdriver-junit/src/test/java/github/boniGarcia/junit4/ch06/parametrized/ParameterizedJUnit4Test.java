@@ -1,4 +1,4 @@
-package github.boniGarcia.junit4;
+package github.boniGarcia.junit4.ch06.parametrized;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
