@@ -1,6 +1,6 @@
 package github.boniGarcia.testng.ch06.cross_browser;
 
-public class ExplanationOfDriversInstallation {
+public class ExplanationOf_Drivers_Installation {
     /*
     //the browser-specific managers
     //  1-

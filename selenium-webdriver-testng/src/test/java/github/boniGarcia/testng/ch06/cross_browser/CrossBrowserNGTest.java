@@ -12,6 +12,14 @@ public class CrossBrowserNGTest {
     WebDriver driver;
     @DataProvider(name = "browsers")
     public static Object[][] data(){return new Object[][]{{"chrome"},{"firefox"}};}
+    @DataProvider(name = "browsers2")
+    public static Object[][] data2(){
+        Object [][] data=new Object[2][2];
+        data()[0][0] = "user1";
+        data()[0][1] = "password1";
+        data()[1][0] = "user2";
+        data()[0][0] = "password2";
+    return data();}
     @AfterMethod
     public void teardown(){driver.quit();}
     @Test(dataProvider = "browsers")
