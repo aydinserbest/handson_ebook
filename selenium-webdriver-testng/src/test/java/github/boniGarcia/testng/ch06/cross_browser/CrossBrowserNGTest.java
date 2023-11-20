@@ -16,8 +16,15 @@ public class CrossBrowserNGTest {
     public void teardown(){driver.quit();}
     @Test(dataProvider = "browsers")
     public void testCrossBrowser(String browserName){
+        //We specify three browsers using their names.
         driver = WebDriverManager.getInstance(browserName).create();
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
         assertThat(driver.getTitle()).contains("Selenium WebDriver");
     }
+    /*
+    This test is executed two times, using a different browser (Chrome and Firefox) each time.
+
+    We need to create the WebDriver instance in the test logic
+    since the test parameters are injected in the test method when using TestNG.
+     */
 }
