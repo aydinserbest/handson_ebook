@@ -2,6 +2,7 @@ package github.boniGarcia.junit4.ch06.cross_browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
@@ -10,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class CrossBrowserJUnit4Test {
@@ -24,6 +27,11 @@ public class CrossBrowserJUnit4Test {
     }
     @Before
     public void setup(){driver = WebDriverManager.getInstance(browserName).create();
+    }
+    @Test
+    public void testCrossBrowser() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
+        assertThat(driver.getTitle()).contains("Selenium WebDriver");
     }
 }
 /*
