@@ -15,7 +15,7 @@ public class Explanations_CommandLine {
     Using Command Line to Filter Test Execution Based on Categories:
 
     The author is discussing how to execute a subset of tests using TestNG groups and Maven commands.
-    When you have a large test suite with many tests grouped into different categories (like "HomePage", "WebForm", etc.),
+    When you have a large test suite with mHany tests grouped into different categories (like "HomePage", "WebForm", etc.),
     you might not always want to run all the tests.
     Instead, you may wish to run only a specific group of tests based on your current testing needs.
     The command line options provided
