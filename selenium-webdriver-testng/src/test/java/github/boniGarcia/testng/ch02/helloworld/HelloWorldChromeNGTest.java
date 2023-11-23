@@ -21,6 +21,12 @@ public class HelloWorldChromeNGTest {
     public void setUpClass(){
         WebDriverManager.chromedriver().setup();
     }
+
+    /*
+    Initialization and Teardown of WebDriver:
+    The setup method initializes the WebDriver (driver) which is used for browser automation.
+    The teardown method closes the browser after the tests are completed.
+     */
     @BeforeMethod
     public void setUp(){
         driver = new ChromeDriver();

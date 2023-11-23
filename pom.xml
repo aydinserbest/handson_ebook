@@ -12,6 +12,7 @@
 
     <modules>
         <module>selenium-webdriver-testng</module>
+        <module>selenium-webdriver-junit</module>
     </modules>
 
     <properties>

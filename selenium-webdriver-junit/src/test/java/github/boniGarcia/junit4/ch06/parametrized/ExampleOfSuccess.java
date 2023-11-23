@@ -1,7 +1,5 @@
 package github.boniGarcia.junit4.ch06.parametrized;
 
-import org.junit.Assert;
-import org.junit.Test;
 
 public class ExampleOfSuccess {
     public static void main(String[] args) {
@@ -19,6 +17,7 @@ public class ExampleOfSuccess {
         return Math.random() > 0.5;
     }
 }
+/*
 class BooleanAssertionTest{
     @Test
     public void testOperation() {
@@ -31,6 +30,8 @@ class BooleanAssertionTest{
         return true; // This should be the actual logic of the operation
     }
 }
+
+ */
 /*
     In these examples, the boolean success is used to determine the outcome of a simulated operation.
     In the first example, it controls which message is printed to the console.
