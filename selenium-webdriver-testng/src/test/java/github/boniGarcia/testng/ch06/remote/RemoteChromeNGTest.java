@@ -1,10 +1,11 @@
-package github.boniGarcia.junit4.ch04.remote;
+package github.boniGarcia.testng.ch06.remote;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,25 +14,29 @@ import static io.github.bonigarcia.wdm.WebDriverManager.isOnline;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 
-public class RemoteFirefoxJUnit4Test {
+public class RemoteChromeNGTest {
     WebDriver driver;
-    /*
-    Alternatively, we can also use WebDriverManager to create an instance of RemoteWebDriver.
-    To that aim, we need to invoke the method remoteAddress() of a given manager to pass the Selenium Server URL.
-    this example shows a test setup using this feature and Firefox as the remote browser.
-     */
-    @Before
+
+    @BeforeMethod
     public void setup() throws MalformedURLException {
         URL seleniumServerUrl = new URL("http://localhost:4444/");
         assumeThat(isOnline(seleniumServerUrl)).isTrue();
 
-        driver = WebDriverManager.firefoxdriver()
-                .remoteAddress(seleniumServerUrl).create();
-    }
-    //or
-    //String seleniumServerUrl = "http://localhost:4444/";
+        ChromeOptions options = new ChromeOptions();
+        driver = new RemoteWebDriver(seleniumServerUrl, options);
 
-    @After
+        // Instead of options we can use:
+
+        // DesiredCapabilities capabilities = new DesiredCapabilities();
+        // capabilities.setBrowserName("chrome");
+
+        // ... or:
+
+        // capabilities.setCapability(CapabilityType.BROWSER_NAME,
+        // Browser.CHROME);
+    }
+
+    @AfterMethod
     public void teardown() {
         if (driver != null) {
             driver.quit();
