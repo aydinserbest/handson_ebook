@@ -34,7 +34,8 @@ public class Core_Explanation {
 
     A central hub that manages the test sessions, which can be on one machine.
     Multiple nodes connected to the hub, which can be on different machines across the network or cloud.
-    Remote Browser Execution: In this scenario, when your code communicates with a Selenium Grid server
+    Remote Browser Execution:
+    In this scenario, when your code communicates with a Selenium Grid server
     and initiates a test, it can start a browser instance on a remote machine where a node is running.
     This remote browser instance is not on your local machine
     but on whichever remote machine (node) the hub has delegated the test session to.
