@@ -25,6 +25,10 @@ public class RemoteChromeNGTest {
         ChromeOptions options = new ChromeOptions();
         driver = new RemoteWebDriver(seleniumServerUrl, options);
 
+        //or
+        //WebDriver driver = new RemoteWebDriver("http://localhost:4444/",
+        //        new ChromeOptions());
+
         // Instead of options we can use:
 
         // DesiredCapabilities capabilities = new DesiredCapabilities();
