@@ -26,6 +26,9 @@ public class RemoteChromeJunitTestWithJavaSetup {
     available on Selenium WebDriver API.
      */        int port = PortProber.findFreePort();
         WebDriverManager.chromedriver().setup();
+        /*
+        We start Selenium Grid in standalone mode, calling its main method.
+         */
         Main.main(new String[] { "standalone", "--port", String.valueOf(port) });
         seleniumServerUrl = new URL(String.format("http://localhost:%d/", port));
 
