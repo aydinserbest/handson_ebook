@@ -1,10 +1,7 @@
 package github.boniGarcia.junit4.ch04.remote;
 
 public class Explanations {
-    /*
-    We find a free port on the localhost. For that, we use the class PortProber,
-    available on Selenium WebDriver API.
-     */
+
     /*
     This test class, RemoteChromeJunitTestWithJavaSetup, is designed
     to automate the process of starting a Selenium Grid in standalone mode without using terminal commands.
