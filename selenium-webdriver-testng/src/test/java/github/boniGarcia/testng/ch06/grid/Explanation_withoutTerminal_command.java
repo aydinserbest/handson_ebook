@@ -1,4 +1,4 @@
-package github.boniGarcia.testng.ch06.remote;
+package github.boniGarcia.testng.ch06.grid;
 
 public class Explanation_withoutTerminal_command {
     /*
