@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.net.URL;
 
 public class UsingClassLoader {
     WebDriver driver;
@@ -23,9 +24,10 @@ public class UsingClassLoader {
 
 
     private String getFileUrl(String fileName) {
-        File file = new File(fileName);
-        if (file.exists()) {
-            return "file://" + file.getAbsolutePath();
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resourceUrl = classLoader.getResource(fileName);
+        if (resourceUrl != null) {
+            return resourceUrl.toString();
         } else {
             throw new RuntimeException("File not found: " + fileName);
         }
