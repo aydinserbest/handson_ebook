@@ -18,7 +18,9 @@ public class UsingFile {
     }
     @BeforeMethod
     public void setup(){
+
         driver = new ChromeDriver();
+        getFileUrl("yourFileName.html"); // Replace with your actual file name
     }
 
     private String getFileUrl(String fileName) {
