@@ -23,6 +23,7 @@ public class WebTables {
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
+        driver.get("https://www.techlistic.com/p/demo-selenium-practice.html");
     }
 
     @AfterMethod
@@ -30,7 +31,7 @@ public class WebTables {
         driver.quit();
     }
     @Test
-    public void printTable() throws InterruptedException {
+    public void printTable() {
 
         WebElement table1 = driver.findElement(By.xpath("//table[@border='1']"));
         System.out.println(table1.getText());
