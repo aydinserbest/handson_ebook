@@ -54,7 +54,7 @@ public class UsingClassLoader {
     }
 
     @Test
-    public void useavaScript() {
+    public void useJavaScript() {
         driver.get(fileUrl);
         // ... Test codes
     }

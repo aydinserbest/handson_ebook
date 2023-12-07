@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
 
@@ -21,6 +22,9 @@ public class Local_Path {
         String localFilePath = Paths.get("/Users/gebruiker/Desktop/table.html").toUri().toString();
         //Load the HTML file with WebDriver
         driver.get(localFilePath);
-        // other codes
+    }
+    @Test
+    public void test(){
+        //test codes
     }
 }
