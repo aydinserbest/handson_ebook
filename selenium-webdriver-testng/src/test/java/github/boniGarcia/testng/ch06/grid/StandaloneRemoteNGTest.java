@@ -1,9 +1,10 @@
 package github.boniGarcia.testng.ch06.grid;
 
-import com.sun.tools.javac.Main;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.grid.Main;
 import org.openqa.selenium.net.PortProber;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
@@ -22,13 +23,14 @@ public class StandaloneRemoteNGTest {
 
     @BeforeClass
     public void setupAll() throws Exception {
-        int port = PortProber.findFreePort();
+        int port = 8080;//PortProber.findFreePort();
         WebDriverManager.chromedriver().setup();
         Main.main(
                 new String[]{"standalone", "--port", String.valueOf(port)});
 
         seleniumServerUrl = new URL(
                 String.format("http://localhost:%d/", port));
+        System.out.println("Selenium Server URL: " + seleniumServerUrl);
     }
 
     @BeforeMethod
@@ -42,8 +44,9 @@ public class StandaloneRemoteNGTest {
     }
 
     @Test
-    public void testStandaloneRemote() {
+    public void testStandaloneRemote() throws InterruptedException {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
         assertThat(driver.getTitle()).contains("Selenium WebDriver");
+        Thread.sleep(10000);
     }
 }
